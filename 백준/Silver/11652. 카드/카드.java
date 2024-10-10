@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,7 +27,7 @@ public class Main {
                 if(o1.getValue().equals(o2.getValue())){
                     return o1.getKey().compareTo(o2.getKey());
                 }
-                return o2.getValue().compareTo(o1.getValue());
+                return o2.getValue()-o1.getValue();
             }
         });
 
