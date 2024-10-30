@@ -26,43 +26,70 @@ public class Main {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int team = Integer.parseInt(st.nextToken());
 
+            time = stringToInt(st.nextToken());
+
+
 
             hashMap.put(team, hashMap.get(team) + 1);
 
-            time = stringToInt(st.nextToken());
-
-            if (hashMap.get(1) > hashMap.get(2)) {
-                if (team == 1) {
-                    if (winTeam != 1) {
-                        prev_time = time;
-                        winTeam = 1;
-                    } 
+            if(hashMap.get(1)>hashMap.get(2)){
+                if(winTeam==1){
+                    aCount+=time-prev_time;
                 }
-
-            } else if (hashMap.get(1).equals(hashMap.get(2))) {
-                if (team == 1) {
-                    bCount += time - prev_time;
-                    prev_time = time;
+                winTeam =1;
+            }else if(hashMap.get(1).equals(hashMap.get(2))){
+                if(winTeam==1){
+                    aCount+=time-prev_time;
                 } else {
-                    aCount += time - prev_time;
-                    prev_time = time;
+                    bCount+=time-prev_time;
                 }
-                winTeam=0;
-            } else {
-                if (team == 2) {
-                    if (winTeam != 2) {
-                        prev_time = time;
-                        winTeam = 2;
-                    }
-
+                winTeam =0;
+            }else{
+                if(winTeam==2){
+                    bCount+=time-prev_time;
                 }
-
-
+                winTeam =2;
             }
 
+            prev_time=time;
 
 
-        }
+
+
+
+//
+//            if (hashMap.get(1) > hashMap.get(2)) {
+//                if (team == 1) {
+//                    if (winTeam != 1) {
+//                        prev_time = time;
+//                        winTeam = 1;
+//                    }
+//                }
+//
+//            } else if (hashMap.get(1).equals(hashMap.get(2))) {
+//                if (team == 1) {
+//                    bCount += time - prev_time;
+//                    prev_time = time;
+//                } else {
+//                    aCount += time - prev_time;
+//                    prev_time = time;
+//                }
+//                winTeam=0;
+//            } else {
+//                if (team == 2) {
+//                    if (winTeam != 2) {
+//                        prev_time = time;
+//                        winTeam = 2;
+//                    }
+//
+//                }
+//
+//
+//            }
+//
+//
+//
+       }
 
         if (winTeam==1) {
             aCount += 48 * 60 - prev_time;
