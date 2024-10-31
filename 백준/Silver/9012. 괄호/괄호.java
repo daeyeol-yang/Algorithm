@@ -1,42 +1,54 @@
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.EmptyStackException;
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int T = Integer.parseInt(br.readLine());
-        Stack myStack = new Stack<>();
-
-        for (int i = 0; i < T; i++) {
-            String s = br.readLine();
-            try {
+        int N = Integer.parseInt(br.readLine());
 
 
-                for (int j = 0; j < s.length(); j++) {
-                    if (s.charAt(j) == '(') {
-                        myStack.push(s.charAt(j));
-                    } else if (s.charAt(j) == ')') {
-                        myStack.pop();
-                    } else {
-                        continue;
+        for (int i = 0; i < N; i++) {
+            String temp = br.readLine();
+            Stack<Character> stack = new Stack<>();
+
+
+            for (int j = 0; j < temp.length(); j++) {
+
+
+                char c = temp.charAt(j);
+
+
+                if (c == '(') {
+                    stack.add(c);
+                } else {
+                    if (!stack.isEmpty()) {
+                        if (stack.peek() == '(') {
+                            stack.pop();
+                        }else {
+                            stack.add(c);
+                        }
+                    } else{
+                        stack.add(c);
                     }
                 }
 
+            }
 
-            if(myStack.isEmpty()){
+
+            if(stack.isEmpty()){
                 System.out.println("YES");
-            }else {
+            }else{
                 System.out.println("NO");
             }
-            }catch (EmptyStackException e){
-                System.out.println("NO");
-            }
-            myStack.clear();
-
         }
+
+
+
+
+
     }
 }
