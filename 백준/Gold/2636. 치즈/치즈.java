@@ -1,5 +1,3 @@
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,7 +34,11 @@ public class Main {
         int count = 0;
 
         while (true) {
+            
+            
+            
             realCheckAir();
+            
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     if (map[i][j] == 1 && check(j, i)) {
@@ -44,9 +46,9 @@ public class Main {
                     }
                 }
             }
-
-
-
+            
+            time++;
+            
             if (endCheck()) {
                 for (int i = 0; i < N; i++) {
                     for (int j = 0; j < M; j++) {
@@ -58,7 +60,11 @@ public class Main {
                 break;
             }
 
-            time++;
+
+
+            
+
+            
 
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
@@ -72,7 +78,7 @@ public class Main {
         }
 
 
-        System.out.println(time + 1);
+        System.out.println(time);
         System.out.println(count);
 
 
