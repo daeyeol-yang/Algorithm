@@ -1,3 +1,5 @@
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,11 +36,7 @@ public class Main {
         int count = 0;
 
         while (true) {
-            
-            
-            
             realCheckAir();
-            
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     if (map[i][j] == 1 && check(j, i)) {
@@ -46,9 +44,10 @@ public class Main {
                     }
                 }
             }
-            
-            time++;
-            
+           
+
+
+
             if (endCheck()) {
                 for (int i = 0; i < N; i++) {
                     for (int j = 0; j < M; j++) {
@@ -60,11 +59,7 @@ public class Main {
                 break;
             }
 
-
-
-            
-
-            
+            time++;
 
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
@@ -78,7 +73,7 @@ public class Main {
         }
 
 
-        System.out.println(time);
+        System.out.println(time + 1);
         System.out.println(count);
 
 
@@ -98,7 +93,7 @@ public class Main {
 
 
     public static boolean check(int x, int y) {
-
+        
 
 
 
@@ -136,7 +131,7 @@ public class Main {
             int next_x = x + dx[i];
             int next_y = y + dy[i];
 
-            if (next_x >= 0 && next_y >= 0 && next_x < M && next_y < N && map[next_y][next_x] != 1&&!visited[next_y][next_x]) {
+            if (next_x >= 0 && next_y >= 0 && next_x < M && next_y < N && map[next_y][next_x] != 1&&map[next_y][next_x] != 2&&!visited[next_y][next_x]) {
                 dfs(next_x, next_y);
             }
         }
