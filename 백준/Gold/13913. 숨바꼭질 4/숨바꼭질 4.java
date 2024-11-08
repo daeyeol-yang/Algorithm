@@ -30,40 +30,39 @@ public class Main {
 
 
 
-//        ArrayList<Integer> arrayList = new ArrayList<>();
-//        int i = Dong;
-//        while (true){
-//            if(nextArray[i]==0){
-//                break;
-//            }
-//            arrayList.add(nextArray[i]);
-//
-//            i = nextArray[i];
-//
-//        }
-//
-//        for (int j = arrayList.size()-1; j >=0 ; j--) {
-//            sb.append(arrayList.get(j)).append(" ");
-//        }
-//        sb.append(Dong);
-//
-//
-//
-//
-//        System.out.println(sb);
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        int i = Dong;
+        while (true){
+            if(i==Soo){
+                break;
+            }
+            arrayList.add(i);
 
-        ArrayList<Integer> path = new ArrayList<>();
-        for (int i = Dong; i != Soo; i = nextArray[i]) {
-            path.add(i);
-        }
-        path.add(Soo); // 시작 위치 추가
+            i = nextArray[i];
 
-        // 경로를 뒤집어서 출력
-        for (int j = path.size() - 1; j >= 0; j--) {
-            sb.append(path.get(j)).append(" ");
         }
+
+        sb.append(Soo).append(" ");
+        for (int j = arrayList.size()-1; j >=0 ; j--) {
+            sb.append(arrayList.get(j)).append(" ");
+        }
+
+
+
 
         System.out.println(sb);
+
+//        ArrayList<Integer> path = new ArrayList<>();
+//        for (int i = Dong; i != Soo; i = nextArray[i]) {
+//            path.add(i);
+//        }
+//        path.add(Soo); // 시작 위치 추가
+//
+//        // 경로를 뒤집어서 출력
+//        for (int j = path.size() - 1; j >= 0; j--) {
+//            sb.append(path.get(j)).append(" ");
+//        }
+
 
 
 
