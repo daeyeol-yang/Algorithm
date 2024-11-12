@@ -11,7 +11,7 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
 
         int[] money = new int[N-1];
-        int[] city = new int[N-1];
+        long[] city = new long[N-1];
 
         StringTokenizer
 
@@ -21,31 +21,19 @@ public class Main {
         }
 
         st = new StringTokenizer(br.readLine());
-        int min = Integer.MAX_VALUE;
         for (int i = 0; i < N-1; i++) {
             money[i] = Integer.parseInt(st.nextToken());
-            min = Math.min(money[i],min);
 
         }
+        int minCost = money[0];
 
-        int minIndex =0;
-        for (int i = money.length-1; i >=0 ; i--) {
-            if(money[i]==min){
-                minIndex = i;
-            }
+        long sum = 0;
+
+        for (int i = 0; i < N-1; i++) {
+            minCost = Math.min(minCost,money[i]);
+            sum += minCost*city[i];
         }
 
-
-
-        int sum =0;
-
-        for (int i = 0; i < minIndex; i++) {
-                sum+=money[i]*city[i];
-        }
-
-        for (int i = minIndex; i <N-1 ; i++) {
-            sum+=min*city[i];
-        }
 
         System.out.println(sum);
 
