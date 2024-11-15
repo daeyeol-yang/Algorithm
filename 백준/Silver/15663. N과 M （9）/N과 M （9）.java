@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +8,7 @@ import java.util.StringTokenizer;
 
 public class Main {
     public static int[] arr, sol;
+
 
     public static ArrayList<int[]> arrayList;
 
@@ -46,19 +46,23 @@ public class Main {
     }
     public static void go(int N ,int R, int depth){
         if(R == depth){
-            if(check()) {
+            if(true) {
                 arrayList.add(sol.clone());
             }
             return;
 
         }
-
+        int before =0;
         for (int i = 0; i < N; i++) {
             if(!visited[i]){
-                visited[i] = true;
-                sol[depth] = arr[i];
-                go(N,R,depth+1);
-                visited[i] = false;
+                if(before != arr[i]){
+                    visited[i] = true;
+                    sol[depth] = arr[i];
+                    before = arr[i];
+                    go(N,R,depth+1);
+                    visited[i] = false;
+                }
+
             }
         }
     }
