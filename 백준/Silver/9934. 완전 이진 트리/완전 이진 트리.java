@@ -1,5 +1,3 @@
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,7 +12,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int K = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        arrayLists = new ArrayList[1000+1];
+        arrayLists = new ArrayList[K+2];
         for (int i = 1; i < arrayLists.length; i++) {
             arrayLists[i] = new ArrayList<>();
         }
