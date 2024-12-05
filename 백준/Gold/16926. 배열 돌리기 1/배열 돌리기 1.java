@@ -29,7 +29,7 @@ public class Main {
 
 
         for (int i = 0; i < R; i++) {
-            arr = rotate(arr);
+            arr = sol(arr);
         }
 
         StringBuilder sb = new StringBuilder();
@@ -59,22 +59,43 @@ public class Main {
 
         for (int i = 0; i < index; i++) {
 
+            int top = i;
+            int bottom = sero-i-1;
+            int left = i;
+            int right = garo-i-1;
+
             int temp = arr[i][i];
 
-            for (int j = 1; j <=garo-2*i-1 ; j++) {
-                arr[i][j+i-1] = arr[i][j+i];
+//            for (int j = 1; j <=garo-2*i-1 ; j++) {
+//                arr[top][j+i-1] = arr[top][j+i];
+//            }
+
+            for (int j = left; j <right ; j++) {
+                arr[top][j] = arr[top][j+1];
             }
 
-            for (int j = 0; j < sero-2*i-1 ; j++) {
-                arr[j+i][garo-i-1] = arr[j+i+1][garo-i-1];
+//            for (int j = 0; j < sero-2*i-1 ; j++) {
+//                arr[j+i][garo-i-1] = arr[j+i+1][garo-i-1];
+//            }
+
+            for (int j = top; j < bottom; j++) {
+                arr[j][right] = arr[j+1][right];
             }
 
-            for (int j = garo-2*i-2; j >=0 ; j--) {
-                arr[sero-1-i][j+i+1] = arr[sero-1-i][j+i];
+//            for (int j = garo-2*i-2; j >=0 ; j--) {
+//                arr[sero-1-i][j+i+1] = arr[sero-1-i][j+i];
+//            }
+
+            for (int j = right; j >left ; j--) {
+                arr[bottom][j] = arr[bottom][j-1];
             }
 
-            for (int j = sero-2*i-2; j >=i ; j--) {
-                arr[j+1+i][i] = arr[j+i][i];
+//            for (int j = sero-2*i-2; j >=i ; j--) {
+//                arr[j+1+i][i] = arr[j+i][i];
+//            }
+
+            for (int j = bottom; j >top+1 ; j--) {
+                arr[j][left] = arr[j-1][left];
             }
 
             arr[1+i][i] = temp;
