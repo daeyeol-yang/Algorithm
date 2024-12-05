@@ -3,6 +3,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -10,14 +11,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        // 입력 받기
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
         int R = Integer.parseInt(st.nextToken());
 
+
         int[][] arr = new int[N][M];
 
-        // 배열 값 입력 받기
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < M; j++) {
@@ -25,23 +25,66 @@ public class Main {
             }
         }
 
-        // 회전 수행
+
+
+
         for (int i = 0; i < R; i++) {
             arr = rotate(arr);
         }
 
-        // 결과 출력
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
+
                 sb.append(arr[i][j]).append(" ");
+
             }
             sb.append('\n');
+
         }
-        System.out.print(sb);
+
+        System.out.println(sb);
     }
 
-    // 반시계 방향으로 한 번 회전하는 함수
+
+
+    public static int[][] sol(int[][] arr){
+
+        int sero = arr.length;
+        int garo = arr[0].length;
+
+        int index = (Math.min(sero,garo))/2;
+
+
+
+        for (int i = 0; i < index; i++) {
+
+            int temp = arr[i][i];
+
+            for (int j = 1; j <=garo-2*i-1 ; j++) {
+                arr[i][j+i-1] = arr[i][j+i];
+            }
+
+            for (int j = 0; j < sero-2*i-1 ; j++) {
+                arr[j+i][garo-i-1] = arr[j+i+1][garo-i-1];
+            }
+
+            for (int j = garo-2*i-2; j >=0 ; j--) {
+                arr[sero-1-i][j+i+1] = arr[sero-1-i][j+i];
+            }
+
+            for (int j = sero-2*i-2; j >=i ; j--) {
+                arr[j+1+i][i] = arr[j+i][i];
+            }
+
+            arr[1+i][i] = temp;
+        }
+
+
+
+        return arr;
+    }
+
     public static int[][] rotate(int[][] arr) {
         int N = arr.length;
         int M = arr[0].length;
@@ -83,4 +126,7 @@ public class Main {
 
         return arr;
     }
+
 }
+
+
