@@ -49,65 +49,36 @@ public class Main {
 
         // 각 레이어별로 회전 처리
         for (int layer = 0; layer < layers; layer++) {
-            // 각 레이어의 상하좌우 값을 구한다
             int top = layer;
             int bottom = N - layer - 1;
             int left = layer;
             int right = M - layer - 1;
 
-            // 레이어의 원소들을 1차원 배열로 뽑아낸다
-            int[] elements = new int[2 * (bottom - top + right - left)];
+            // 상단, 우측, 하단, 좌측 원소들을 순차적으로 이동
+            int temp = arr[top][left]; // 첫 번째 원소 저장
 
-            int index = 0;
-
-            // 상단 (왼쪽 -> 오른쪽)
+            // 상단 왼쪽 -> 오른쪽으로 이동
             for (int i = left; i < right; i++) {
-                elements[index++] = arr[top][i];
+                arr[top][i] = arr[top][i + 1];
             }
 
-            // 우측 (위 -> 아래)
+            // 우측 위 -> 아래로 이동
             for (int i = top; i < bottom; i++) {
-                elements[index++] = arr[i][right];
+                arr[i][right] = arr[i + 1][right];
             }
 
-            // 하단 (오른쪽 -> 왼쪽)
+            // 하단 오른쪽 -> 왼쪽으로 이동
             for (int i = right; i > left; i--) {
-                elements[index++] = arr[bottom][i];
+                arr[bottom][i] = arr[bottom][i - 1];
             }
 
-            // 좌측 (아래 -> 위)
+            // 좌측 아래 -> 위로 이동
             for (int i = bottom; i > top; i--) {
-                elements[index++] = arr[i][left];
+                arr[i][left] = arr[i - 1][left];
             }
 
-            // 회전시킨 배열을 다시 2D 배열로 복원
-            // 반시계 방향으로 회전: 1칸씩 이동
-            int temp = elements[0];
-            for (int i = 0; i < elements.length - 1; i++) {
-                elements[i] = elements[i + 1];
-            }
-            elements[elements.length - 1] = temp;
-
-            index = 0;
-            // 상단 (왼쪽 -> 오른쪽)
-            for (int i = left; i < right; i++) {
-                arr[top][i] = elements[index++];
-            }
-
-            // 우측 (위 -> 아래)
-            for (int i = top; i < bottom; i++) {
-                arr[i][right] = elements[index++];
-            }
-
-            // 하단 (오른쪽 -> 왼쪽)
-            for (int i = right; i > left; i--) {
-                arr[bottom][i] = elements[index++];
-            }
-
-            // 좌측 (아래 -> 위)
-            for (int i = bottom; i > top; i--) {
-                arr[i][left] = elements[index++];
-            }
+            // 첫 번째 원소를 마지막에 넣기
+            arr[top + 1][left] = temp;
         }
 
         return arr;
