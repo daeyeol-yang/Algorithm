@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,7 +25,7 @@ public class Main {
         for (int i = 0; i < M; i++) {
             int num = Integer.parseInt(st.nextToken());
             if(arrayList1.contains(num)){
-                arrayList1.remove(Integer.valueOf(num));
+                arrayList1.remove(num);
             }
         }
 
