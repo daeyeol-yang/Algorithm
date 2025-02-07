@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -44,7 +43,7 @@ public class Main {
 
             for(int j =0; j < i ; j++) {
                 if(arr[i]>arr[j]) {
-                    if(dp[i]<dp[j]+1) {
+                    if(dp[i]<=dp[j]+1) {
                         dp[i] = dp[j]+1;
                         prev[i] = j;
                         if(ret<dp[i]){
