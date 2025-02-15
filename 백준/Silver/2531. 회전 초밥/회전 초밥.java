@@ -1,4 +1,5 @@
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -46,12 +47,18 @@ public class Main {
             menu[arr[i]]++;
         }
 
-
+        int type = check(menu);
         int max = check(menu);
         for (int i = K; i < rotateArr.length; i++) {
+            if(menu[rotateArr[i]]==0){
+                type+=1;
+            }
             menu[rotateArr[i]]++;
             menu[rotateArr[i-K]]--;
-            max = Math.max(max, check(menu));
+            if(menu[rotateArr[i-K]]==0){
+                type-=1;
+            }
+            max = Math.max(max, type);
         }
 
         System.out.println(max);
