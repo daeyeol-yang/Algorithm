@@ -1,13 +1,10 @@
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -112,8 +109,7 @@ public class Main {
 
 
     public static int[] di(int node,int[] dist){
-        //PriorityQueue<Node> pq = new PriorityQueue<>((o1,o2) -> o1.distance - o2.distance);
-        Queue<Node> pq = new LinkedList<>();
+        PriorityQueue<Node> pq = new PriorityQueue<>((o1,o2) -> o1.distance - o2.distance);
         pq.add(new Node(node,0));
 
 
