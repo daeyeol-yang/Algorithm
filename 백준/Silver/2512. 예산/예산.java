@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -43,7 +42,7 @@ public class Main{
 
             }
 
-            System.out.println(lo - 1);
+            System.out.println(hi - 1);
         }else{
             System.out.println(max);
         }
