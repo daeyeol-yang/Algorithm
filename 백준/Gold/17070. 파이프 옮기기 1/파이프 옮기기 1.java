@@ -41,29 +41,26 @@ public class Main {
         for(int i = 0; i< N ;i++) {
 
             if(map[i][j]==0) {
-                if(isRange(j-1,i)) {
-                    dp[i][j] += dp[i][j-1];
-                    dp[i][j] += dp1[i][j-1];
+                if (isRange(j - 1, i)) {
+                    dp[i][j] += dp[i][j - 1];
+                    dp[i][j] += dp1[i][j - 1];
                 }
 
 
+                
+                if (isRange(j - 1, i - 1)) {
+                    if (map[i - 1][j] == 0 && map[i][j - 1] == 0) {
+                        dp1[i][j] += dp1[i - 1][j - 1];
+                        dp1[i][j] += dp[i - 1][j - 1];
+                        dp1[i][j] += dp2[i - 1][j - 1];
+                    }
 
-            }
 
-            if(i>0 && map[i][j]==0 &&map[i-1][j]==0 && map[i][j-1]==0){
-                if(isRange(j-1,i-1)){
-                    dp1[i][j] += dp1[i-1][j-1];
-                    dp1[i][j] += dp[i-1][j-1];
-                    dp1[i][j] += dp2[i-1][j-1];
                 }
 
-
-            }
-
-            if(isRange(j,i-1)){
-                if(map[i][j]==0){
-                    dp2[i][j] += dp1[i-1][j];
-                    dp2[i][j] += dp2[i-1][j];
+                if (isRange(j, i - 1)) {
+                    dp2[i][j] += dp1[i - 1][j];
+                    dp2[i][j] += dp2[i - 1][j];
                 }
             }
 
